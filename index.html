@@ -22,39 +22,25 @@
 </head>
 
 <body>
-    <div class="container">
-        <h2>My Shopping List</h2>
+    <div class="container" id="app">
+        <h2>{{ShoppingListName}}</h2>
         <div class="input-group">
             <input placeholder="add shopping list item" type="text" class="js-new-item form-control">
             <span class="input-group-btn">
-                <button @click="addItem" class="js-add btn btn-default" type="button">Add!</button>
+                <button  class="js-add btn btn-default" type="button">Add!</button>
             </span>
         </div>
         <ul>
-            <li>
+            <li v-for="item in Items">
                 <div class="checkbox">
                     <label>
-                        <input class="js-item" name="list" type="checkbox"> Carrot
-                    </label>
-                </div>
-            </li>
-            <li>
-                <div class="checkbox">
-                    <label>
-                        <input class="js-item" name="list" type="checkbox"> Book
-                    </label>
-                </div>
-            </li>
-            <li class="removed">
-                <div class="checkbox">
-                    <label>
-                        <input class="js-item" name="list" type="checkbox" checked> Gift for aunt's birthday
+                        <input class="js-item" name="list" v-model="item.checked"  type="checkbox"> {{item.name}}
                     </label>
                 </div>
             </li>
         </ul>
     </div>
-    
+
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <script src="Scripts.js">
     
