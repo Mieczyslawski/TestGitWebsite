@@ -25,20 +25,21 @@
     <div class="container" id="app">
         <h2>{{ShoppingListName}}</h2>
         <div class="input-group">
-            <input placeholder="add shopping list item" type="text" class="js-new-item form-control">
+            <input placeholder="add shopping list item" type="text" class="js-new-item form-control" v-on:keyup.enter="addNewItem" v-model="NewItemName">
             <span class="input-group-btn">
-                <button  class="js-add btn btn-default" type="button">Add!</button>
+                <button  class="js-add btn btn-default" type="button" v-on:click="addNewItem">Add!</button>
             </span>
         </div>
         <ul>
             <li v-for="item in Items">
-                <div class="checkbox">
+                <div class="checkbox" v-bind:class="{removed: item.checked}">
                     <label>
-                        <input class="js-item" name="list" v-model="item.checked"  type="checkbox"> {{item.name}}
+                        <input    name="list" v-model="item.checked"  type="checkbox"> {{item.name}}
                     </label>
                 </div>
             </li>
         </ul>
+        <a href="http://thecatapi.com"><img src="http://thecatapi.com/api/images/get?format=src&type=gif"></a>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
